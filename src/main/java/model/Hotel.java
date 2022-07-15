@@ -71,6 +71,8 @@ public class Hotel {
                 dispoRooms.add(room);
             }
         }
+
+        System.out.println();
         return dispoRooms;
     }
 }
