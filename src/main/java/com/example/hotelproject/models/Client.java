@@ -21,6 +21,10 @@ public class Client {
         this.reservedRooms = new ArrayList<>();
     }
 
+    public Client() {
+
+    }
+
     public ArrayList<Room> getClientRooms() {
         return reservedRooms;
     }
