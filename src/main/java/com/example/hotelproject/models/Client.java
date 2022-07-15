@@ -1,6 +1,7 @@
-package model;
+package com.example.hotelproject.models;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 
 public class Client {
     private long clientID;
@@ -8,11 +9,22 @@ public class Client {
     private String lastName;
     private LocalDate birthDate;
 
+    private ArrayList<Room> reservedRooms ;
+
     public Client(long id, String firstName, String lastName, LocalDate birthDate) {
         this.clientID = id;
         this.firstName = firstName;
         this.lastName = lastName;
         this.birthDate = birthDate;
+        this.reservedRooms = new ArrayList<>();
+    }
+
+    public ArrayList<Room> getClientRooms() {
+        return reservedRooms;
+    }
+
+    public void setClientRooms(ArrayList<Room> clientRooms) {
+        this.reservedRooms = clientRooms;
     }
 
     public long getClientID() {
