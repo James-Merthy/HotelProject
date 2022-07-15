@@ -6,7 +6,6 @@ import java.util.Map;
 
 public class Hotel {
 
-    private int hihi;
     private int roomCounter;
     private String hotelName ;
     private ArrayList<Room> rooms ;
