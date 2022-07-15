@@ -6,6 +6,7 @@ import java.util.Map;
 
 public class Hotel {
 
+    private int hihi;
     private int roomCounter;
     private String hotelName ;
     private ArrayList<Room> rooms ;
@@ -17,7 +18,7 @@ public class Hotel {
         this.roomCounter=0;
         this.hotelName = hotelName;
         //#region this.rooms =  new ArrayList<Room>();
-        this.rooms =  new ArrayList<Room>();
+        this.rooms =  new ArrayList<>();
         rooms.add(new Room(1,100));
         rooms.add(new Room(2,110));
         rooms.add(new Room(3,120));
@@ -72,7 +73,7 @@ public class Hotel {
             }
         }
 
-        System.out.println();
+
         return dispoRooms;
     }
 }
