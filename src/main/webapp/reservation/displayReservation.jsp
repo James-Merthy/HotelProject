@@ -32,8 +32,8 @@
 <ul>
     <li>
         <div>
-            <p> <span> id: </span> <%= room.getRoomID() %> </p>
-            <p> <span> nom: </span> <%= room.getPrice() %> $ </p>
+            <p> <span> Room number: </span> <%= room.getRoomID() %> </p>
+            <p> <span> Price: </span> <%= room.getPrice() %> $ </p>
 
         </div>
     </li>
