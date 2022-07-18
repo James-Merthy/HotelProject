@@ -6,7 +6,7 @@ public class Room {
 
     private long roomID;
     private boolean reserved;
-    private int price;
+    private long price;
 
     private LocalDate enterDate;
     private LocalDate exitDate;
@@ -18,6 +18,13 @@ public class Room {
         this.exitDate = exitDate;
         this.reserved = false;
     }
+    public Room( long price, LocalDate enterDate, LocalDate exitDate) {
+        this.price = price;
+        this.enterDate = enterDate;
+        this.exitDate = exitDate;
+        this.reserved = false;
+    }
+
 
     public Room(long roomID, int price) {
         this.roomID = roomID;
@@ -57,11 +64,11 @@ public class Room {
         this.reserved = reserved;
     }
 
-    public int getPrice() {
+    public long getPrice() {
         return price;
     }
 
-    public void setPrice(int price) {
+    public void setPrice(long price) {
         this.price = price;
     }
 }

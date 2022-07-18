@@ -1,6 +1,6 @@
 package com.example.hotelproject.servlets;
 
-import com.example.hotelproject.models.Room;
+import com.example.hotelproject.models.Client;
 import com.example.hotelproject.service.ReservatonService;
 
 import javax.servlet.*;
@@ -9,11 +9,9 @@ import javax.servlet.annotation.*;
 import java.io.IOException;
 import java.time.LocalDate;
 
-@WebServlet(name = "AddReservationServlet", value = "/reservation/addReservation")
-public class AddReservationServlet extends HttpServlet {
-
+@WebServlet(name = "AddClientServlet", value = "/reservation/addClient")
+public class AddClientServlet extends HttpServlet {
     private final ReservatonService service = ReservatonService.getInstance();
-
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
@@ -23,30 +21,28 @@ public class AddReservationServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         try{
-            long price = Long.parseLong(
+
+            String firstName =
                     request.getParameter
-                    ("roomPrice"));
-
-            LocalDate enterDate = request.getParameter("enterDate") == null ? null :
+                    ("firstName");
+            String lastName =
+                    request.getParameter
+                    ("lastName");
+            LocalDate birthDate = request.getParameter("birthDate") == null ? null :
                     LocalDate.parse
                     (request.getParameter
-                    ("enterDate"));
-            LocalDate exitDate = request.getParameter("exitDate") == null ? null :
-                    LocalDate.parse
-                    (request.getParameter
-                    ("exitDate"));
+                    ("birthDate"));
 
-            long id = service.insert
-                    (new Room(price,enterDate,exitDate));
+            long id = service.insertClient
+                    (new Client(firstName,lastName,birthDate));
 
             response.sendRedirect
                     (request.getContextPath()+
-                    "/reservation/getOneReservation.jsp?id="+id);
-
+                    "/reservation/getOneClient.jsp?id="+id);
         }
         catch (NumberFormatException ex){
             request.getRequestDispatcher
-                    ("/reservation/addReservation.jsp")
+                    ("/reservation/addClient.jsp")
                     .forward(request,response);
         }
     }

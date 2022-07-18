@@ -1,5 +1,8 @@
 package com.example.hotelproject.service;
 
+import com.example.hotelproject.exception.ClientNotFound;
+import com.example.hotelproject.exception.RoomNotFound;
+import com.example.hotelproject.models.Client;
 import com.example.hotelproject.models.Room;
 
 import java.time.LocalDate;
@@ -9,7 +12,9 @@ public class ReservatonService {
 
     private static ReservatonService instance;
     private int lastID;
+    private int clientLastID;
     private final ArrayList<Room> roomList = new ArrayList<>();
+    private final ArrayList<Client> client = new ArrayList<>();
 
     public static ReservatonService getInstance(){
         if(instance == null){
@@ -20,6 +25,19 @@ public class ReservatonService {
             return instance;
         }
     }
+
+    public int getClientLastID() {
+        return clientLastID;
+    }
+
+    public void setClientLastID(int clientLastID) {
+        this.clientLastID = clientLastID;
+    }
+
+    public int incClientLastID(){
+        return ++this.clientLastID;
+    }
+
     private ReservatonService(){
         this.roomList.add(new Room(1,100,
                 LocalDate.of(2022,2,10),
@@ -31,6 +49,11 @@ public class ReservatonService {
                 LocalDate.of(2022,2,18),
                 LocalDate.of(2022,2,28)));
         this.lastID=3;
+        this.clientLastID = 0;
+    }
+
+    public ArrayList<Client> getAllClients() {
+        return new ArrayList<>(this.client);
     }
 
     public ArrayList<Room> getAllReservation(){
@@ -41,4 +64,25 @@ public class ReservatonService {
         roomList.add(toInsert);
         return toInsert.getRoomID();
     }
+
+    public Room getOne(int id){
+        return roomList.stream()
+                .filter(p->p.getRoomID() == id)
+                .findFirst()
+                .orElseThrow( () -> new RoomNotFound(id));
+    }
+
+    public long insertClient(Client toInsert){
+        toInsert.setClientID(++this.clientLastID);
+        client.add(toInsert);
+        return toInsert.getClientID();
+    }
+    public Client getClient(int id){
+        return client.stream()
+                .filter(p -> p.getClientID() == id)
+                .findFirst()
+                .orElseThrow( () -> new ClientNotFound(id));
+    }
+
+
 }

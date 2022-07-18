@@ -8,11 +8,18 @@
 <h1><%= "Hello World!" %>
 </h1>
 <br/>
-<a href="hello-servlet">Hello Servlet</a>
-<br>
-<a href="reservation/displayReservation.jsp">Display Reservation</a>
+<a href="reservation/addClient.jsp">Add Client </a>
 <br>
 <a href="reservation/addReservation.jsp">Add Reservation</a>
+<br>
 
+<a href="reservation/getOneClient.jsp">Display One Client</a>
+<br>
+<a href="reservation/getOneReservation.jsp">Display One Room</a>
+<br>
+<a href="reservation/displayClient.jsp">Display Clients</a>
+<br>
+<a href="reservation/displayReservation.jsp">Display Rooms</a>
+<br>
 </body>
 </html>

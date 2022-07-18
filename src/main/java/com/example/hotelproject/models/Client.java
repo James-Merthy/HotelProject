@@ -5,6 +5,8 @@ import java.util.ArrayList;
 
 public class Client {
 
+    private long yiyi;
+
     private long clientID;
     private String firstName;
     private String lastName;
@@ -14,6 +16,12 @@ public class Client {
 
     public Client(long id, String firstName, String lastName, LocalDate birthDate) {
         this.clientID = id;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.birthDate = birthDate;
+        this.reservedRooms = new ArrayList<>();
+    }
+    public Client(String firstName, String lastName, LocalDate birthDate) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.birthDate = birthDate;

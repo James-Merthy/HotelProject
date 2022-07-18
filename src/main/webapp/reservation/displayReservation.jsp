@@ -34,8 +34,9 @@
         <div>
             <p> <span> Room number: </span> <%= room.getRoomID() %> </p>
             <p> <span> Price: </span> <%= room.getPrice() %> $ </p>
-
         </div>
+        <a href="getOneReservation.jsp?id=<%=room.getRoomID()%>">Show That Room</a>
+
     </li>
 </ul>
 <%
