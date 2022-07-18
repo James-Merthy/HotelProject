@@ -5,6 +5,8 @@ import java.util.ArrayList;
 
 public class Client {
 
+    private long yiyi;
+
     private long clientID;
     private String firstName;
     private String lastName;
