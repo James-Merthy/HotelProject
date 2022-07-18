@@ -19,6 +19,12 @@ public class Client {
         this.birthDate = birthDate;
         this.reservedRooms = new ArrayList<>();
     }
+    public Client(String firstName, String lastName, LocalDate birthDate) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.birthDate = birthDate;
+        this.reservedRooms = new ArrayList<>();
+    }
 
     public Client() {
 

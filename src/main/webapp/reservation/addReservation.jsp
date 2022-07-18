@@ -14,25 +14,26 @@
 
 <h1> Room Reservation Area</h1>
 
-<form action = "<%= request.getContextPath()%>/reservation/addReservation">
+<form action = "<%= request.getContextPath()%>/reservation/addReservation" method="post">
 
-    <div>
-        <label for="firstName_input"> First Name : </label>
-        <% String firstName = request.getParameter("firstName");%>
-        <input type="text" id="firstName_input" name="firstName" value="<%= firstName==null ? "" : firstName%>">
-    </div>
+<%--    <div>--%>
+<%--        <label for="firstName_input"> First Name : </label>--%>
+<%--        <% String firstName = request.getParameter("firstName");%>--%>
+<%--        <input type="text" id="firstName_input" name="firstName" value="<%= firstName==null ? "" : firstName%>">--%>
+<%--    </div>--%>
 
-    <div>
-        <label for="lastName_input"> Last Name : </label>
-        <% String lastName = request.getParameter("lastName");%>
-        <input type="text" id="lastName_input" name="lastName" value="<%= lastName==null ? "" : lastName%>">
-    </div>
+<%--    <div>--%>
+<%--        <label for="lastName_input"> Last Name : </label>--%>
+<%--        <% String lastName = request.getParameter("lastName");%>--%>
+<%--        <input type="text" id="lastName_input" name="lastName" value="<%= lastName==null ? "" : lastName%>">--%>
+<%--    </div>--%>
 
-    <div>
-        <label for="birthDate"> Birth Date  : </label>
-        <% LocalDate birthDate = LocalDate.parse(request.getParameter("birthDate"));%>
-        <input type="text" id="birthDate" name="birthDate" value="<%= birthDate==null ? "" : birthDate%>">
-    </div>
+<%--    <div>--%>
+<%--        <label for="birthDate"> Birth Date  : </label>--%>
+<%--        <% LocalDate birthDate =--%>
+<%--                request.getParameter("birthDate") == null ? null : LocalDate.parse(request.getParameter("birthDate"));%>--%>
+<%--        <input type="date" id="birthDate" name="birthDate" value="<%= birthDate==null ? "" : birthDate%>">--%>
+<%--    </div>--%>
 
     <div>
         <label for="roomPrice"> Room Price : </label>
@@ -43,17 +44,20 @@
 
     <div>
         <label for="enterDate"> Enter Date : </label>
-        <% LocalDate enterDate = LocalDate.parse(request.getParameter("enterDate"));%>
-        <input type="text" id="enterDate" name="enterDate" value="<%= enterDate==null ? "" : enterDate%>">
+        <% LocalDate enterDate =
+                request.getParameter("enterDate") == null ? null : LocalDate.parse(request.getParameter("enterDate"));%>
+        <input type="date" id="enterDate" name="enterDate" value="<%= enterDate==null ? "" : enterDate%>">
     </div>
 
     <div>
         <label for="exitDate"> Exit Date : </label>
-        <% LocalDate exitDate = LocalDate.parse(request.getParameter("exitDate"));%>
-        <input type="text" id="exitDate" name="exitDate" value="<%= exitDate==null ? "" : exitDate%>">
+        <% LocalDate exitDate =
+                request.getParameter("exitDate") == null ? null : LocalDate.parse(request.getParameter("exitDate"));%>
+        <input type="date" id="exitDate" name="exitDate" value="<%= exitDate==null ? "" : exitDate%>">
     </div>
+    <br>
 
-
+    <input type = "submit">
 
 </form>
 </body>
