@@ -5,7 +5,6 @@ import java.util.ArrayList;
 
 public class Client {
 
-    private int yike;
     private long clientID;
     private String firstName;
     private String lastName;
@@ -19,6 +18,10 @@ public class Client {
         this.lastName = lastName;
         this.birthDate = birthDate;
         this.reservedRooms = new ArrayList<>();
+    }
+
+    public Client() {
+
     }
 
     public ArrayList<Room> getClientRooms() {

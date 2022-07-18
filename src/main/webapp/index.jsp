@@ -9,5 +9,8 @@
 </h1>
 <br/>
 <a href="hello-servlet">Hello Servlet</a>
+<br>
+<a href="reservation/displayReservation.jsp">Display Reservation</a>
+
 </body>
 </html>
