@@ -6,6 +6,7 @@ import java.util.HashMap;
 
 public class Hotel {
 
+    private String haha;
     private String hotelName ;
     private ArrayList<Room> allRooms ;
     private ArrayList<Client> allClients;
