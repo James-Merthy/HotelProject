@@ -30,7 +30,20 @@ public class AddReservationServlet extends HttpServlet {
                     (request.getParameter
                     ("birthDate"));
 
+            Long roomPrice =
+                    Long.parseLong(
+                    request.getParameter
+                    ("roomPrice"));
 
+            LocalDate enterDat =
+                    LocalDate.parse
+                    (request.getParameter
+                    ("enterDate"));
+
+            LocalDate exitDate =
+                    LocalDate.parse
+                    (request.getParameter
+                    ("exitDate"));
 
         }
         catch (NumberFormatException ex){
