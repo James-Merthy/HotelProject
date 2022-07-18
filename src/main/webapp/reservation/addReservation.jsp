@@ -16,25 +16,6 @@
 
 <form action = "<%= request.getContextPath()%>/reservation/addReservation" method="post">
 
-<%--    <div>--%>
-<%--        <label for="firstName_input"> First Name : </label>--%>
-<%--        <% String firstName = request.getParameter("firstName");%>--%>
-<%--        <input type="text" id="firstName_input" name="firstName" value="<%= firstName==null ? "" : firstName%>">--%>
-<%--    </div>--%>
-
-<%--    <div>--%>
-<%--        <label for="lastName_input"> Last Name : </label>--%>
-<%--        <% String lastName = request.getParameter("lastName");%>--%>
-<%--        <input type="text" id="lastName_input" name="lastName" value="<%= lastName==null ? "" : lastName%>">--%>
-<%--    </div>--%>
-
-<%--    <div>--%>
-<%--        <label for="birthDate"> Birth Date  : </label>--%>
-<%--        <% LocalDate birthDate =--%>
-<%--                request.getParameter("birthDate") == null ? null : LocalDate.parse(request.getParameter("birthDate"));%>--%>
-<%--        <input type="date" id="birthDate" name="birthDate" value="<%= birthDate==null ? "" : birthDate%>">--%>
-<%--    </div>--%>
-
     <div>
         <label for="roomPrice"> Room Price : </label>
         <% String roomPrice = request.getParameter("roomPrice");%>

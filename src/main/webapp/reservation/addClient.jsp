@@ -12,7 +12,7 @@
 </head>
 <body>
 <h1> Client Creation Area </h1>
-<form action = "<%= request.getContextPath()%>/reservation/addClient" method="pos">
+<form action = "<%= request.getContextPath()%>/reservation/addClient" method="post">
         <div>
             <label for="firstName_input"> First Name : </label>
             <% String firstName = request.getParameter("firstName");%>
@@ -31,6 +31,9 @@
                     request.getParameter("birthDate") == null ? null : LocalDate.parse(request.getParameter("birthDate"));%>
             <input type="date" id="birthDate" name="birthDate" value="<%= birthDate==null ? "" : birthDate%>">
         </div>
+
+        <input type = "submit">
+
 
 </form>
 </body>

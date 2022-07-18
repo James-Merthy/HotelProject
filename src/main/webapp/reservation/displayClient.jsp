@@ -1,5 +1,6 @@
 <%@ page import="com.example.hotelproject.service.ReservatonService" %>
-<%@ page import="com.example.hotelproject.models.Client" %><%--
+<%@ page import="com.example.hotelproject.models.Client" %>
+<%@ page import="java.util.ArrayList" %><%--
   Created by IntelliJ IDEA.
   User: JAVA
   Date: 18-07-22
@@ -9,7 +10,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
 <%!
-  private ReservatonService service = ReservatonService.getInstance();
+  private final ReservatonService service = ReservatonService.getInstance();
 %>
 
 <%
@@ -18,7 +19,7 @@
     response.setStatus(400);
     return;
   }
-  Client client = service.getClient(Integer.parseInt(id));
+  ArrayList<Client> clientList = service.getAllClients();
 %>
 
 <html>
@@ -30,11 +31,24 @@
 <h1>Display Client</h1>
 
 <div>
-  <p> <span> id: </span> <%= client.getClientID() %></p>
-  <p> <span> first name: </span> <%= client.getFirstName()%></p>
-  <p> <span> last name: </span> <%= client.getLastName()%></p>
-  <p> <span> birth date : </span> <%= client.getBirthDate()%></p>
+  <%
+    for (Client client : clientList){
+  %>
+  <ul>
+    <li>
+      <div>
+        <p> <span> Client number: </span> <%= client.getClientID() %> </p>
+        <p> <span> First name: </span> <%= client.getFirstName() %> </p>
+        <p> <span> Last name: </span> <%= client.getLastName() %> </p>
+        <p> <span> Birth date: </span> <%= client.getBirthDate() %> </p>
 
+      </div>
+      <a href="getOneClient.jsp?id=<%=client.getClientID()%>">Show That Room</a>
+    </li>
+  </ul>
+  <%
+    }
+  %>
 </div>
 
 </body>

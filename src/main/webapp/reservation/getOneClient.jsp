@@ -9,7 +9,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
 <%!
-  private ReservatonService service = ReservatonService.getInstance();
+  private final ReservatonService service = ReservatonService.getInstance();
 %>
 
 <%
@@ -36,6 +36,7 @@
   <p> <span> birth date : </span> <%= client.getBirthDate()%></p>
 
 </div>
+<a href= "<%= request.getContextPath()%>/index.jsp"> Go Back </a>
 
 </body>
 </html>

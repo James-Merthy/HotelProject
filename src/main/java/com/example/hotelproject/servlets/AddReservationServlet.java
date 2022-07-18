@@ -1,6 +1,7 @@
 package com.example.hotelproject.servlets;
 
 import com.example.hotelproject.models.Room;
+import com.example.hotelproject.service.ReservatonService;
 
 import javax.servlet.*;
 import javax.servlet.http.*;
@@ -10,6 +11,9 @@ import java.time.LocalDate;
 
 @WebServlet(name = "AddReservationServlet", value = "/reservation/addReservation")
 public class AddReservationServlet extends HttpServlet {
+
+    private final ReservatonService service = ReservatonService.getInstance();
+
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
@@ -19,18 +23,25 @@ public class AddReservationServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         try{
-            String firstName =
+            long price = Long.parseLong(
                     request.getParameter
-                    ("firstName");
-            String lastName =
-                    request.getParameter
-                    ("lastName");
-            LocalDate birthDate =
+                    ("roomPrice"));
+
+            LocalDate enterDate = request.getParameter("enterDate") == null ? null :
                     LocalDate.parse
                     (request.getParameter
-                    ("birthDate"));
+                    ("enterDate"));
+            LocalDate exitDate = request.getParameter("exitDate") == null ? null :
+                    LocalDate.parse
+                    (request.getParameter
+                    ("exitDate"));
 
+            long id = service.insert
+                    (new Room(price,enterDate,exitDate));
 
+            response.sendRedirect
+                    (request.getContextPath()+
+                    "/reservation/getOneReservation.jsp?id="+id);
 
         }
         catch (NumberFormatException ex){

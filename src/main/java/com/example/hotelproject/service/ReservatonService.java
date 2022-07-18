@@ -1,5 +1,6 @@
 package com.example.hotelproject.service;
 
+import com.example.hotelproject.exception.ClientNotFound;
 import com.example.hotelproject.exception.RoomNotFound;
 import com.example.hotelproject.models.Client;
 import com.example.hotelproject.models.Room;
@@ -13,7 +14,7 @@ public class ReservatonService {
     private int lastID;
     private int clientLastID;
     private final ArrayList<Room> roomList = new ArrayList<>();
-    private final ArrayList<Client> client ;
+    private final ArrayList<Client> client = new ArrayList<>();
 
     public static ReservatonService getInstance(){
         if(instance == null){
@@ -24,6 +25,19 @@ public class ReservatonService {
             return instance;
         }
     }
+
+    public int getClientLastID() {
+        return clientLastID;
+    }
+
+    public void setClientLastID(int clientLastID) {
+        this.clientLastID = clientLastID;
+    }
+
+    public int incClientLastID(){
+        return ++this.clientLastID;
+    }
+
     private ReservatonService(){
         this.roomList.add(new Room(1,100,
                 LocalDate.of(2022,2,10),
@@ -35,9 +49,11 @@ public class ReservatonService {
                 LocalDate.of(2022,2,18),
                 LocalDate.of(2022,2,28)));
         this.lastID=3;
-
-        client = new ArrayList<>();
         this.clientLastID = 0;
+    }
+
+    public ArrayList<Client> getAllClients() {
+        return new ArrayList<>(this.client);
     }
 
     public ArrayList<Room> getAllReservation(){
@@ -65,7 +81,7 @@ public class ReservatonService {
         return client.stream()
                 .filter(p -> p.getClientID() == id)
                 .findFirst()
-                .orElseThrow( () -> new RoomNotFound(id));
+                .orElseThrow( () -> new ClientNotFound(id));
     }
 
 
