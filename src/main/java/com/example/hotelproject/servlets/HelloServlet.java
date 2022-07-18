@@ -1,4 +1,4 @@
-package com.example.hotelproject;
+package com.example.hotelproject.servlets;
 
 import java.io.*;
 import javax.servlet.http.*;
