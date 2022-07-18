@@ -14,11 +14,6 @@
 %>
 
 <%
-  String id = request.getParameter("id");
-  if(id==null){
-    response.setStatus(400);
-    return;
-  }
   ArrayList<Client> clientList = service.getAllClients();
 %>
 
