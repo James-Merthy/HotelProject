@@ -11,6 +11,8 @@
 <a href="hello-servlet">Hello Servlet</a>
 <br>
 <a href="reservation/displayReservation.jsp">Display Reservation</a>
+<br>
+<a href="reservation/addReservation.jsp">Add Reservation</a>
 
 </body>
 </html>
