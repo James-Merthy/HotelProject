@@ -1,66 +1,42 @@
 package com.example.hotelproject.models;
 
+import lombok.*;
+
+import javax.persistence.*;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.LinkedHashSet;
+import java.util.List;
+import java.util.Set;
 
+@AllArgsConstructor
+@NoArgsConstructor
+@Getter
+@Setter
+@Entity
+@Table(name = "client")
 public class Client {
 
-    private long clientID;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "client_id", nullable = false)
+    private int clientID;
+    @Column(name = "client_name", nullable = false)
+
     private String firstName;
+    @Column(name = "client_surname", nullable = false)
+
     private String lastName;
+    @Column(name = "birthDate", nullable = false)
     private LocalDate birthDate;
 
-    private ArrayList<Room> reservedRooms ;
+    @OneToMany(mappedBy = "client")
+    private Set<Room> reservedRooms = new LinkedHashSet<>();
 
-    public Client(long id, String firstName, String lastName, LocalDate birthDate) {
-        this.clientID = id;
+    public Client(String firstName, String lastName, LocalDate birthDate) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.birthDate = birthDate;
-        this.reservedRooms = new ArrayList<>();
     }
 
-    public Client() {
-
-    }
-
-    public ArrayList<Room> getClientRooms() {
-        return reservedRooms;
-    }
-
-    public void setClientRooms(ArrayList<Room> clientRooms) {
-        this.reservedRooms = clientRooms;
-    }
-
-    public long getClientID() {
-        return clientID;
-    }
-
-    public void setClientID(long id) {
-        this.clientID = id;
-    }
-
-    public String getFirstName() {
-        return firstName;
-    }
-
-    public void setFirstName(String firstName) {
-        this.firstName = firstName;
-    }
-
-    public String getLastName() {
-        return lastName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
-    }
-
-    public LocalDate getBirthDate() {
-        return birthDate;
-    }
-
-    public void setBirthDate(LocalDate birthDate) {
-        this.birthDate = birthDate;
-    }
 }

@@ -53,8 +53,8 @@ public class Hotel {
     public ArrayList<Room> getAvailableRooms(){
         ArrayList<Room> availableRooms = new ArrayList<>();
         for (Client clients : allClients){
-            for ( Room rooms : clients.getClientRooms()){
-                if(!rooms.isReserved()){
+            for ( Room rooms : clients.getReservedRooms()){ //getClientRooms
+                if(rooms.getReserved() == 1){
                     availableRooms.add(rooms);
                 }
             }

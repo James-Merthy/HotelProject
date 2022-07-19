@@ -1,67 +1,58 @@
 package com.example.hotelproject.models;
 
 import java.time.LocalDate;
+import lombok.*;
+import org.hibernate.annotations.SQLInsert;
 
+import javax.persistence.*;
+
+@AllArgsConstructor
+@NoArgsConstructor
+@Getter
+@Setter
+@Entity
+@Table(name = "room")
 public class Room {
 
-    private long roomID;
-    private boolean reserved;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "room_id", nullable = false )
+    private int roomID;
+    @Column(name = "reserved", nullable = false)
+    private int reserved;
+    @Column(name = "price", nullable = false)
     private int price;
-
+    @Column(name = "enterDate", nullable = false)
     private LocalDate enterDate;
+    @Column(name = "existDate", nullable = false)
     private LocalDate exitDate;
 
-    public Room(long roomID, int price, LocalDate enterDate, LocalDate exitDate) {
+    @ManyToOne
+    @JoinColumn(name = "client_id")
+    private Client client;
+
+
+
+    public Room(int roomID, int price, LocalDate enterDate, LocalDate exitDate) {
         this.roomID = roomID;
         this.price = price;
         this.enterDate = enterDate;
         this.exitDate = exitDate;
-        this.reserved = false;
+        this.reserved = 0;
     }
 
-    public Room(long roomID, int price) {
-        this.roomID = roomID;
+    public Room(int price, LocalDate enterDate, LocalDate exitDate) {
+
         this.price = price;
-        this.reserved = false;
-    }
-
-    public LocalDate getEnterDate() {
-        return enterDate;
-    }
-
-    public void setEnterDate(LocalDate enterDate) {
         this.enterDate = enterDate;
-    }
-
-    public LocalDate getExitDate() {
-        return exitDate;
-    }
-
-    public void setExitDate(LocalDate exitDate) {
         this.exitDate = exitDate;
-    }
+        this.reserved = 0;
 
-    public long getRoomID() {
-        return roomID;
     }
-
-    public void setRoomID(long roomID) {
+    public Room(int roomID, int price) {
         this.roomID = roomID;
-    }
-
-    public boolean isReserved() {
-        return reserved;
-    }
-
-    public void setReserved(boolean reserved) {
-        this.reserved = reserved;
-    }
-
-    public int getPrice() {
-        return price;
-    }
-
-    public void setPrice(int price) {
         this.price = price;
+        this.reserved = 0;
     }
+
 }

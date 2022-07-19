@@ -20,7 +20,7 @@ public class ReservatonService {
             return instance;
         }
     }
-    private ReservatonService(){
+    public ReservatonService(){
         this.roomList.add(new Room(1,100,
                 LocalDate.of(2022,2,10),
                 LocalDate.of(2022,2,15)));
